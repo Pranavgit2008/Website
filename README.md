@@ -1,2 +1,2 @@
 Check out the live website here:  
-🌐 [Visit my website](https://pranavmadoor.fun)
+🌐 <a href="https://pranavmadoor.fun" target="_blank">Visit my website</a>
