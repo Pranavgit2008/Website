@@ -22,6 +22,7 @@
   --spacing-s: 8px;
   --spacing-m: 16px;
   --spacing-l: 24px;
+  --addspace: 20px;
   --spacing-xl: 32px;
   --spacing-xxl: 48px;
   --spacing-xxxl: 64px;
@@ -557,7 +558,7 @@ body {
   content: '';
   position: absolute;
   left: -34px;
-  top: var(--spacing-l);
+  top: calc(var(--spacing-l) + var(--addspace));
   width: 14px;
   height: 14px;
   background: var(--apple-blue);
