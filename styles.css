@@ -22,7 +22,6 @@
   --spacing-s: 8px;
   --spacing-m: 16px;
   --spacing-l: 24px;
-  --addspace: 20px;
   --spacing-xl: 32px;
   --spacing-xxl: 48px;
   --spacing-xxxl: 64px;
@@ -497,7 +496,7 @@ body {
   color: var(--label-1);
 }
 
-/* Mobile-Optimized Timeline */
+/* Education Timeline */
 .timeline {
   position: relative;
   padding-left: 50px;
@@ -534,7 +533,8 @@ body {
   content: '';
   position: absolute;
   left: -34px;
-  top: calc(var(--spacing-l) + var(--addspace));
+  top: 50%;
+  transform: translateY(-50%);
   width: 14px;
   height: 14px;
   background: var(--apple-blue);
@@ -554,7 +554,7 @@ body {
 
 .timeline-item:hover::before,
 .timeline-item:active::before {
-  transform: scale(1.2);
+  transform: translateY(-50%) scale(1.2);
   box-shadow: 0 0 0 4px rgba(0, 122, 255, 0.3);
 }
 
