@@ -68,7 +68,7 @@ body {
   padding: 0 var(--spacing-l);
 }
 
-/* Professional Custom Cursor - Desktop Only */
+/* Cursor tracker */
 .cursor {
   position: fixed;
   width: 10px;
@@ -104,7 +104,7 @@ body {
   transition: all 0.2s ease-out;
 }
 
-/* Professional Typography with Mobile Optimization */
+/* hero section */
 .hero-title {
   font-size: clamp(2.5rem, 8vw, 6rem);
   font-weight: 800;
@@ -152,7 +152,7 @@ body {
   to { width: 80px; }
 }
 
-/* Elegant Glassmorphism with Mobile Touch Support */
+
 .glass-card {
   background: rgba(28, 28, 30, 0.7);
   backdrop-filter: blur(40px);
@@ -206,7 +206,7 @@ body {
   opacity: 1;
 }
 
-/* Mobile-First Navigation */
+/* Navbar */
 .nav {
   position: fixed;
   top: max(env(safe-area-inset-top), var(--spacing-l));
@@ -218,17 +218,16 @@ body {
   -webkit-backdrop-filter: blur(40px);
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 50px;
-  padding: var(--spacing-s) var(--spacing-m);
+  padding: var(--spacing-s) var(--spacing-s);
   transition: all 0.2s ease-out;
-  box-shadow: var(--shadow-2);
+  border-color: #007AFF;
+  box-shadow: var(--shadow-3);
+  animation: glow 6s infinite alternate ease-in-out;
   -webkit-touch-callout: none;
 }
 
 .nav:hover {
   background: rgba(28, 28, 30, 0.95);
-  border-color: #007AFF;
-  box-shadow: var(--shadow-3);
-  animation: glow 6s infinite alternate ease-in-out;
   transform: translateX(-50%) translateY(-2px);
 }
 
@@ -290,7 +289,7 @@ body {
   border: 1px solid rgba(0, 122, 255, 0.3);
 }
 
-/* Clean Hero Design with Mobile Optimization */
+/* Hero section */
 .hero {
   min-height: 100vh;
   min-height: 100dvh;
@@ -330,7 +329,7 @@ body {
   padding: 0 var(--spacing-m);
 }
 
-/* Optimized Particle System */
+/* Particle System */
 .particles-canvas {
   position: absolute;
   top: 0;
@@ -343,7 +342,7 @@ body {
   will-change: transform;
 }
 
-/* Mobile-Optimized Skills Grid */
+/* Skills Section */
 .skills-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -419,7 +418,7 @@ body {
   line-height: 1.5;
 }
 
-/* Mobile-Optimized Project Design */
+/* Project Section */
 .project {
   background: rgba(120, 120, 128, 0.06);
   backdrop-filter: blur(40px);
@@ -572,7 +571,7 @@ body {
   line-height: 1.4;
 }
 
-/* Mobile-Optimized Contact */
+/* Contact Section */
 .contact-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -631,7 +630,7 @@ body {
   word-break: break-word;
 }
 
-/* Mobile-Optimized Footer */
+/* Footer */
 .footer {
   background: linear-gradient(135deg, var(--system-bg-2), var(--system-bg-3));
   border-top: 1px solid var(--separator);
@@ -700,7 +699,7 @@ body {
   padding: var(--spacing-xxxl) 0;
 }
 
-/* INSTANT Animations - Mobile Optimized */
+/* INSTANT Animations */
 .animate-on-scroll {
   opacity: 0;
   transform: translateY(30px);
@@ -730,7 +729,7 @@ body {
   }
 }
 
-/* COMPREHENSIVE MOBILE OPTIMIZATION */
+/* MOBILE OPTIMIZATION */
 @media (max-width: 768px) {
   :root {
     --spacing-xs: 2px;

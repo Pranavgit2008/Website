@@ -205,7 +205,7 @@ class MobileOptimizedPortfolio {
     window.addEventListener('scroll', handleScroll, { passive: true });
     updateActiveNav();
   }
-
+  
   setupScrollAnimations() {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
