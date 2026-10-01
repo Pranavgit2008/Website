@@ -15,7 +15,6 @@ class MobileOptimizedPortfolio {
     await this.waitForLoadComplete();
     this.setupDeviceOptimizations();
     !this.isMobile && this.setupCursor();
-    this.setupDynamicIsland();
     this.setupInstantNavigation();
     this.setupScrollAnimations();
     !this.isMobile && this.setupParticles();
@@ -111,18 +110,6 @@ class MobileOptimizedPortfolio {
     });
 
     updateCursor();
-  }
-
-  setupDynamicIsland() {
-    const island = document.getElementById('dynamic-island');
-
-    setTimeout(() => {
-      island.classList.add('show');
-    }, this.isMobile ? 500 : 800);
-
-    setTimeout(() => {
-      island.classList.remove('show');
-    }, this.isMobile ? 2000 : 3000);
   }
 
   setupInstantNavigation() {
