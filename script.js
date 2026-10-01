@@ -23,17 +23,25 @@ class MobileOptimizedPortfolio {
   }
 
   preCalculateSections() {
-    const sections = document.querySelectorAll('section[id]');
-    sections.forEach(section => {
-      this.sectionOffsets.set(section.id, section.offsetTop - (this.isMobile ? 80 : 100));
-    });
+  const sections = document.querySelectorAll('section[id]');
 
-    window.addEventListener('resize', () => {
-      sections.forEach(section => {
-        this.sectionOffsets.set(section.id, section.offsetTop - (this.isMobile ? 80 : 100));
-      });
+  const calculateOffsets = () => {
+    sections.forEach(section => {
+      const sectionTop = section.getBoundingClientRect().top + window.scrollY;
+      const headerOffset = this.isMobile ? 80 : 100;
+
+      this.sectionOffsets.set(
+        section.id,
+        sectionTop - headerOffset
+      );
     });
-  }
+  };
+
+  calculateOffsets();
+
+  window.addEventListener('resize', calculateOffsets);
+}
+
 
   async waitForLoadComplete() {
     const promises = [
@@ -140,8 +148,7 @@ class MobileOptimizedPortfolio {
     };
 
     navLinks.forEach(link => {
-      // Touch-optimized event handling
-      const handleNavigation = (e) => {
+      link.addEventListener('click', (e) => {
         e.preventDefault();
         e.stopPropagation();
 
@@ -151,7 +158,6 @@ class MobileOptimizedPortfolio {
         if (targetOffset !== undefined) {
           instantScrollTo(targetOffset);
 
-          // Instant feedback
           navLinks.forEach(l => l.classList.remove('active'));
           link.classList.add('active');
 
@@ -160,14 +166,9 @@ class MobileOptimizedPortfolio {
             navigator.vibrate(50);
           }
         }
-      };
-
-      if (this.isTouch) {
-        link.addEventListener('touchstart', handleNavigation, { passive: false });
-      } else {
-        link.addEventListener('click', handleNavigation);
-      }
+      });
     });
+
 
     // Optimized scroll tracking
     const updateActiveNav = () => {
@@ -308,15 +309,6 @@ class MobileOptimizedPortfolio {
     document.addEventListener('touchstart', () => {}, { passive: true });
     document.addEventListener('touchmove', () => {}, { passive: true });
 
-    // Prevent zoom on double tap for specific elements
-    const preventZoomElements = document.querySelectorAll('.nav-link, .project-link, .social-link');
-    preventZoomElements.forEach(el => {
-      el.addEventListener('touchend', (e) => {
-        e.preventDefault();
-        el.click();
-      });
-    });
-
     // Mobile-specific performance monitoring
     let lastScrollTime = Date.now();
     window.addEventListener('scroll', () => {
@@ -350,6 +342,21 @@ class MobileOptimizedPortfolio {
 
 // Initialize mobile-optimized portfolio
 const portfolio = new MobileOptimizedPortfolio();
+
+const menuToggle = document.getElementById('menu-toggle');
+const nav = document.querySelector('.nav');
+const navLinks = document.querySelectorAll('.nav-link');
+
+menuToggle.addEventListener('click', () => {
+  nav.classList.toggle('menu-open');
+});
+
+navLinks.forEach(link => {
+  link.addEventListener('click', () => {
+    nav.classList.remove('menu-open');
+  });
+});
+
 
 // Error handling
 window.addEventListener('error', (e) => {
