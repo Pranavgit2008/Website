@@ -983,27 +983,6 @@ body {
   }
 }
 
-/* Small Mobile Devices */
-@media (max-width: 480px) {
-  :root {
-    --spacing-xxxl: 40px;
-    --spacing-xxl: 28px;
-  }
-
-  .nav {
-    top: var(--spacing-xs);
-    left: var(--spacing-xs);
-    right: var(--spacing-xs);
-  }
-
-  .hero-title {
-    font-size: clamp(2rem, 10vw, 2.5rem);
-  }
-
-  .section-title {
-    font-size: clamp(1.5rem, 8vw, 2rem);
-  }
-}
 
 /* Large Mobile/Small Tablet */
 @media (min-width: 769px) and (max-width: 1024px) {
