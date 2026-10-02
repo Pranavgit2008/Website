@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://pranavgit2008.github.io/Website/sitemap.xml
