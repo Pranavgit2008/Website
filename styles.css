@@ -983,7 +983,7 @@ body {
   }
 }
 
-/* Large Mobile/Small Tablet */
+/* Small Tablet */
 @media (min-width: 769px) and (max-width: 1024px) {
   .container {
     padding: 0 var(--spacing-xl);
