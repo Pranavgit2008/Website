@@ -497,7 +497,7 @@ body {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: var(--spacing-l);
-  margin-top: var(--spacing-xxl);
+  margin-top: var(--spacing-l);
 }
 
 .edit-card {
