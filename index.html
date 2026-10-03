@@ -7,7 +7,7 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="theme-color" content="#000000">
-  <title>Pranav Madoor | Software Developer</title>
+  <title>Pranav Madoor | Software Developer | Video Editor</title>
   <meta name="description" content="Pranav Madoor — aspiring software developer and video editor with experience in Python, MySQL, HTML, CSS, Adobe Premiere Pro and After Effects.">
 
   <link rel="canonical" href="https://pranavmadoor.in/">
@@ -81,6 +81,7 @@
       <li><a href="#about" class="nav-link" data-section="about">About</a></li>
       <li><a href="#skills" class="nav-link" data-section="skills">Skills</a></li>
       <li><a href="#projects" class="nav-link" data-section="projects">Projects</a></li>
+      <li><a href="#edits" class="nav-link" data-section="edits">Edits</a></li>
       <li><a href="#education" class="nav-link" data-section="education">Education</a></li>
       <li><a href="#contact" class="nav-link" data-section="contact">Contact</a></li>
     </ul>
@@ -174,6 +175,41 @@
       </div>
     </div>
   </section>
+
+  <!-- Edits Section -->
+  <section id="edits" class="section">
+    <div class="container">
+      <div class="section-header animate-on-scroll">
+        <h2 class="section-title">Edits</h2>
+        <p style="font-size: clamp(1rem, 3.5vw, 1.125rem); color: var(--label-2); line-height: 1.5;">
+          A showcase of the videos I’ve edited and brought to life
+        </p>
+      </div>
+
+      <div class="edits-grid">
+        <div class="edit-card animate-on-scroll stagger-1">
+          <div class="edit-video">
+            <video id="editVideo" controls playsinline preload="metadata">
+              <source src="edits/EDITREEL.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          </div>
+          <button class="video-expand" id="expandEditVideo" type="button">
+            <i class="fa-solid fa-expand" aria-hidden="true"></i>
+            <span>Expand video</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="video-modal" id="videoModal" role="dialog" aria-modal="true" aria-label="Expanded edit video">
+    <button class="video-close" id="videoClose" type="button" aria-label="Close expanded video">&times;</button>
+    <video id="modalVideo" playsinline preload="metadata">
+      <source src="edits/EDITREEL.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </div>
 
   <!-- Education Section -->
   <section id="education" class="section">

@@ -492,6 +492,160 @@ body {
   color: var(--label-1);
 }
 
+/* Edits Section */
+.edits-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--spacing-l);
+  margin-top: var(--spacing-xxl);
+}
+
+.edit-card {
+  background: rgba(120, 120, 128, 0.06);
+  backdrop-filter: blur(40px);
+  -webkit-backdrop-filter: blur(40px);
+  border-radius: var(--radius-xl);
+  padding: var(--spacing-m);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  transition: all 0.3s ease-out;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow-1);
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+.edit-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(
+    90deg,
+    var(--apple-blue),
+    var(--apple-blue-light)
+  );
+}
+
+.edit-card:hover,
+.edit-card:active {
+  transform: translateY(-8px) scale(1.01);
+  background: rgba(120, 120, 128, 0.1);
+  border-color: rgba(255, 255, 255, 0.1);
+  box-shadow: var(--shadow-4);
+}
+
+.edit-video {
+  width: min(100%, 280px);
+  aspect-ratio: 9 / 16;
+  overflow: hidden;
+  border-radius: var(--radius-l);
+  background: #000;
+  margin-bottom: var(--spacing-l);
+}
+
+.edit-video video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.video-expand {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-s);
+  min-height: 44px;
+  padding: var(--spacing-s) var(--spacing-m);
+  border: 1px solid rgba(0, 122, 255, 0.3);
+  border-radius: 50px;
+  background: rgba(0, 122, 255, 0.12);
+  color: var(--label-1);
+  font: inherit;
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.video-expand:hover,
+.video-expand:focus-visible {
+  background: rgba(0, 122, 255, 0.24);
+  border-color: rgba(0, 122, 255, 0.6);
+}
+
+/* Video Expand Modal */
+.video-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: rgba(0, 0, 0, 0.92);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.video-modal.active {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.video-modal video {
+  width: min(90vw, 500px);
+  height: 90vh;
+  object-fit: contain;
+
+  border-radius: var(--radius-l);
+  box-shadow: var(--shadow-4);
+
+  transform: scale(0.9);
+  transition: transform 0.3s ease;
+}
+
+.video-modal.active video {
+  transform: scale(1);
+}
+
+.video-close {
+  position: absolute;
+  top: 24px;
+  right: 28px;
+
+  width: 48px;
+  height: 48px;
+
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 50%;
+
+  background: rgba(28, 28, 30, 0.8);
+  color: white;
+
+  font-size: 32px;
+  line-height: 1;
+
+  cursor: pointer;
+  z-index: 10001;
+
+  transition: all 0.2s ease;
+}
+
+.video-close:hover {
+  background: var(--apple-blue);
+  transform: scale(1.08);
+}
+
+
 /* Education Timeline */
 .timeline {
   position: relative;
@@ -912,6 +1066,19 @@ body {
 
   .skill-item {
     padding: var(--spacing-l);
+  }
+
+  .edits-grid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-m);
+  }
+
+  .edit-card {
+    padding: var(--spacing-l);
+  }
+
+  .edit-video {
+    margin-bottom: var(--spacing-m);
   }
 
   .timeline {

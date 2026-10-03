@@ -376,3 +376,42 @@ if ('serviceWorker' in navigator && window.innerWidth <= 768) {
     });
   });
 }
+
+// Expand Edits video
+const editVideo = document.getElementById('editVideo');
+const expandEditVideo = document.getElementById('expandEditVideo');
+const videoModal = document.getElementById('videoModal');
+const modalVideo = document.getElementById('modalVideo');
+const videoClose = document.getElementById('videoClose');
+
+if (editVideo && expandEditVideo && videoModal && modalVideo && videoClose) {
+  const closeVideoModal = () => {
+    videoModal.classList.remove('active');
+    modalVideo.pause();
+    editVideo.currentTime = modalVideo.currentTime;
+    expandEditVideo.focus();
+  };
+
+  expandEditVideo.addEventListener('click', () => {
+    editVideo.pause();
+    videoModal.classList.add('active');
+    modalVideo.currentTime = editVideo.currentTime;
+    modalVideo.play().catch(() => {
+      modalVideo.focus();
+    });
+  });
+
+  videoClose.addEventListener('click', closeVideoModal);
+
+  videoModal.addEventListener('click', (e) => {
+    if (e.target === videoModal) {
+      closeVideoModal();
+    }
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && videoModal.classList.contains('active')) {
+      closeVideoModal();
+    }
+  });
+}
