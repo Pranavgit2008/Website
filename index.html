@@ -189,8 +189,8 @@
       <div class="edits-grid">
         <div class="edit-card animate-on-scroll stagger-1">
           <div class="edit-video">
-            <video id="editVideo" controls playsinline preload="metadata">
-              <source src="edits/EDITREEL.mp4" type="video/mp4">
+            <video id="editVideo" controls playsinline preload="none">
+              <source data-src="edits/EDITREEL.mp4" type="video/mp4">
               Your browser does not support the video tag.
             </video>
           </div>
@@ -205,8 +205,8 @@
 
   <div class="video-modal" id="videoModal" role="dialog" aria-modal="true" aria-label="Expanded edit video">
     <button class="video-close" id="videoClose" type="button" aria-label="Close expanded video">&times;</button>
-    <video id="modalVideo" controls playsinline preload="metadata">
-      <source src="edits/EDITREEL.mp4" type="video/mp4">
+    <video id="modalVideo" controls playsinline preload="none">
+      <source data-src="edits/EDITREEL.mp4" type="video/mp4">
       Your browser does not support the video tag.
     </video>
   </div>

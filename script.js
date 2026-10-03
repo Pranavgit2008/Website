@@ -12,6 +12,7 @@ class MobileOptimizedPortfolio {
 
   async init() {
     this.preCalculateSections();
+    this.setupLazyVideoLoading();
     await this.waitForLoadComplete();
     this.setupDeviceOptimizations();
     !this.isMobile && this.setupCursor();
@@ -227,6 +228,42 @@ class MobileOptimizedPortfolio {
     this.observers.add(observer);
   }
 
+  setupLazyVideoLoading() {
+    const editsSection = document.getElementById('edits');
+    const editVideo = document.getElementById('editVideo');
+
+    if (!editsSection || !editVideo) return;
+
+    if (!('IntersectionObserver' in window)) {
+      this.loadVideoSource(editVideo);
+      return;
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+      if (entries.some(entry => entry.isIntersecting)) {
+        this.loadVideoSource(editVideo);
+        observer.disconnect();
+        this.observers.delete(observer);
+      }
+    }, { rootMargin: '300px 0px' });
+
+    observer.observe(editsSection);
+    this.observers.add(observer);
+  }
+
+  loadVideoSource(video) {
+    const sources = video.querySelectorAll('source[data-src]');
+
+    if (sources.length === 0) return;
+
+    sources.forEach(source => {
+      source.src = source.dataset.src;
+      source.removeAttribute('data-src');
+    });
+    video.preload = 'metadata';
+    video.load();
+  }
+
   setupParticles() {
     if (this.isMobile) return;
 
@@ -388,17 +425,33 @@ if (editVideo && expandEditVideo && videoModal && modalVideo && videoClose) {
   const closeVideoModal = () => {
     videoModal.classList.remove('active');
     modalVideo.pause();
-    editVideo.currentTime = modalVideo.currentTime;
+    if (modalVideo.readyState > 0 && editVideo.readyState > 0) {
+      editVideo.currentTime = modalVideo.currentTime;
+    }
     expandEditVideo.focus();
   };
 
   expandEditVideo.addEventListener('click', () => {
     editVideo.pause();
+    const playbackPosition = editVideo.currentTime;
     videoModal.classList.add('active');
-    modalVideo.currentTime = editVideo.currentTime;
-    modalVideo.play().catch(() => {
-      modalVideo.focus();
-    });
+    portfolio.loadVideoSource(modalVideo);
+
+    const playExpandedVideo = () => {
+      if (!videoModal.classList.contains('active')) return;
+      if (modalVideo.readyState > 0) {
+        modalVideo.currentTime = playbackPosition;
+      }
+      modalVideo.play().catch(() => {
+        modalVideo.focus();
+      });
+    };
+
+    if (modalVideo.readyState > 0) {
+      playExpandedVideo();
+    } else {
+      modalVideo.addEventListener('loadedmetadata', playExpandedVideo, { once: true });
+    }
   });
 
   videoClose.addEventListener('click', closeVideoModal);
